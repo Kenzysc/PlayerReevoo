@@ -21,7 +21,7 @@ public class Review {
 	private int id;
 	private String title;
 	private String content;
-	private String stars;
+	private int stars;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "athlete_id")
