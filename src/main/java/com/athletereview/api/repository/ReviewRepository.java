@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.athletereview.api.models.Review;
 
-public interface ReviewInterface extends JpaRepository<Review, Integer> {
+public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	List<Review> findByAthleteId(int athleteId);
 }
