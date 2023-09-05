@@ -26,6 +26,18 @@ public class AthleteController {
 		return null;
 	}
 	
+	@GetMapping("athlete/name")
+	public ResponseEntity<AthleteResponseDto> getAthletesByName(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+														  @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize) {
+		return null;
+	}
+	
+	@GetMapping("athlete/type")
+	public ResponseEntity<AthleteResponseDto> getAthletesByType(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+														  @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize) {
+		return null;
+	}
+	
 	@GetMapping("athlete/{id}")
 	public ResponseEntity<AthleteDto> athleteDetail(@PathVariable int id) {
 		return null;

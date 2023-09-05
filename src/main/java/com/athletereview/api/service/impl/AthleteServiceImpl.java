@@ -21,11 +21,24 @@ public class AthleteServiceImpl implements AthleteService {
 	@Override
 	public AthleteDto createAthlete(AthleteDto athleteDto) {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public AthleteResponseDto getAllAthlete(int pageNo, int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public AthleteResponseDto getAllAthleteByName(int pageNo, int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public AthleteResponseDto getAllAthleteByType(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
 		return null;
 	}

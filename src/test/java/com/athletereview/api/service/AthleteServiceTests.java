@@ -8,9 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.athletereview.api.dto.AthleteDto;
-import com.athletereview.api.dto.ReviewDto;
 import com.athletereview.api.models.Athlete;
-import com.athletereview.api.models.Review;
 import com.athletereview.api.repository.AthleteRepository;
 import com.athletereview.api.service.impl.AthleteServiceImpl;
 
@@ -44,6 +42,16 @@ public class AthleteServiceTests {
 	
 	@Test
 	public void AthleteService_GetAllAthletes_ReturnsAthleteResponseDto() {
+		
+	}
+	
+	@Test
+	public void AthleteService_GetAllAthletesByName_ReturnsAthleteResponseDto() {
+		
+	}
+	
+	@Test
+	public void AthleteService_GetAllAthletesByType_ReturnsAthleteResponseDto() {
 		
 	}
 	

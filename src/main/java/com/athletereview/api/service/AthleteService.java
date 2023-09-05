@@ -11,8 +11,14 @@ public interface AthleteService {
 	
 	AthleteDto getAthleteById(int id);
 	
+	AthleteResponseDto getAllAthleteByName(int pageNo, int pageSize);
+	
+	AthleteResponseDto getAllAthleteByType(int pageNo, int pageSize);
+	
 	AthleteDto updateAthlete(AthleteDto athleteDto, int id);
 	
 	void deleteAthlete(int id);
+	
+	
 	
 }
