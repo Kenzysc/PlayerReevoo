@@ -3,11 +3,13 @@ package com.athletereview.api.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.athletereview.api.dto.ReviewDto;
 import com.athletereview.api.repository.ReviewRepository;
 import com.athletereview.api.service.ReviewService;
 
+@Service
 public class ReviewServiceImpl implements ReviewService {
 
 	private ReviewRepository reviewRepository;

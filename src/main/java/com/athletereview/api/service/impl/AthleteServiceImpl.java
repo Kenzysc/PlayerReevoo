@@ -1,12 +1,14 @@
 package com.athletereview.api.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.athletereview.api.dto.AthleteDto;
 import com.athletereview.api.dto.AthleteResponseDto;
 import com.athletereview.api.repository.AthleteRepository;
 import com.athletereview.api.service.AthleteService;
 
+@Service
 public class AthleteServiceImpl implements AthleteService {
 	
 	private AthleteRepository athleteRepository;
