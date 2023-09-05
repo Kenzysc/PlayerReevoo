@@ -25,5 +25,5 @@ public class Review {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "athlete_id")
-	private Athelete athelete;
+	private Athlete athlete;
 }
