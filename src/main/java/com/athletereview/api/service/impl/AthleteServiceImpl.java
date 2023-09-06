@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.athletereview.api.dto.AthleteDto;
 import com.athletereview.api.dto.AthleteResponseDto;
+import com.athletereview.api.models.Athlete;
 import com.athletereview.api.repository.AthleteRepository;
 import com.athletereview.api.service.AthleteService;
 
@@ -23,8 +24,18 @@ public class AthleteServiceImpl implements AthleteService {
 	@Override
 	public AthleteDto createAthlete(AthleteDto athleteDto) {
 		
+		Athlete athlete = new Athlete();
+		athlete.setName(athleteDto.getName());
+		athlete.setType(athleteDto.getType());
 		
-		return null;
+		Athlete newAthlete = athleteRepository.save(athlete);
+		
+		AthleteDto athleteRespnse = new AthleteDto();
+		athleteRespnse.setId(newAthlete.getId());
+		athleteRespnse.setName(newAthlete.getName());
+		athleteRespnse.setType(newAthlete.getType());
+		
+		return athleteRespnse;
 	}
 
 	@Override
