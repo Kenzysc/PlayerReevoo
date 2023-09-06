@@ -24,6 +24,7 @@ public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	public ReviewServiceImpl(ReviewRepository reviewRepository, AthleteRepository athleteRepository) {
 		this.reviewRepository = reviewRepository;
+		this.athleteRepository = athleteRepository;
 	}
 
 	@Override
