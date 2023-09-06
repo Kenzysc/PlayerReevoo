@@ -13,6 +13,7 @@ import com.athletereview.api.models.Athlete;
 import com.athletereview.api.models.Review;
 import com.athletereview.api.repository.AthleteRepository;
 import com.athletereview.api.repository.ReviewRepository;
+import com.athletereview.api.service.impl.AthleteServiceImpl;
 import com.athletereview.api.service.impl.ReviewServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
@@ -22,7 +23,7 @@ public class ReviewServiceTests {
 	private ReviewRepository reviewRepository;
 	
 	@Mock 
-	AthleteRepository athleteRepository;
+	private AthleteServiceImpl athleteService;
 	
 	@InjectMocks
 	private ReviewServiceImpl reviewService;

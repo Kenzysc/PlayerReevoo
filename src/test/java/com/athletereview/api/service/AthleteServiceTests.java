@@ -19,7 +19,7 @@ public class AthleteServiceTests {
 	private AthleteRepository athleteRepository;
 	
 	@InjectMocks 
-	private AthleteServiceImpl athleteServiceImpl;
+	private AthleteServiceImpl athleteService;
 	
 	private Athlete athlete;
 	private AthleteDto athleteDto;
