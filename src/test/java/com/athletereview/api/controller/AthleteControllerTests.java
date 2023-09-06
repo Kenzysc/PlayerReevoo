@@ -45,6 +45,17 @@ public class AthleteControllerTests {
 	}
 	
 	@Test
+	public void AthleteController_GetAllAthletesByName_ReturnsResponseDto() throws Exception {
+		
+	}
+	
+	@Test
+	public void AthleteController_GetListAthletesType_ReturnsResponseDto() throws Exception {
+		
+	}
+	
+	
+	@Test
 	public void AthleteController_AthleteDetail_ReturnsAthleteDto() throws Exception {
 		
 	}

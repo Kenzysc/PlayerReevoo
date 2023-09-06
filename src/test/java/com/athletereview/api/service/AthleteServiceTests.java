@@ -51,7 +51,7 @@ public class AthleteServiceTests {
 	}
 	
 	@Test
-	public void AthleteService_GetAllAthletesByType_ReturnsAthleteResponseDto() {
+	public void AthleteService_GetAllTypes_ReturnsAthleteResponseDto() {
 		
 	}
 	
