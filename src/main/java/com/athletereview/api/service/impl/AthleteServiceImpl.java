@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.athletereview.api.dto.AthleteDto;
 import com.athletereview.api.dto.AthleteResponseDto;
+import com.athletereview.api.exceptions.AthleteNotFoundException;
 import com.athletereview.api.models.Athlete;
 import com.athletereview.api.repository.AthleteRepository;
 import com.athletereview.api.service.AthleteService;
