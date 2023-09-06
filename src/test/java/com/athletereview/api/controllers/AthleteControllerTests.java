@@ -27,6 +27,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.athletereview.api.dto.AthleteDto;
 import com.athletereview.api.dto.AthleteResponseDto;
+import com.athletereview.api.models.Athlete;
 import com.athletereview.api.service.AthleteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -48,8 +49,10 @@ public class AthleteControllerTests {
 	private int athleteId;
 	private AthleteResponseDto responseDto;
 	
+	
 	@BeforeEach
 	public void init() {
+		
 		athleteDto = AthleteDto.builder().name("Messi").type("Football/Soccer").build();
 		
 		responseDto = AthleteResponseDto.builder().pageNo(1).pageSize(10)
@@ -77,6 +80,8 @@ public class AthleteControllerTests {
 	@Test
 	public void AthleteController_GetAllAthletes_ReturnsResponseDto() throws Exception {
 		
+		when(athleteService.getAllAthlete(1, 10)).thenReturn(responseDto);
+		
 		ResultActions response = mockMvc.perform(get("/api/athlete")
 				.contentType(MediaType.APPLICATION_JSON)
 				.param("pageNo", "1")
@@ -91,6 +96,8 @@ public class AthleteControllerTests {
 	@Test
 	public void AthleteController_GetAllAthletesByName_ReturnsResponseDto() throws Exception {
 		
+		when(athleteService.getAllAthleteByName(1, 10, "messi")).thenReturn(responseDto);
+		
 		ResultActions response = mockMvc.perform(get("/api/athlete/names")
 				.contentType(MediaType.APPLICATION_JSON)
 				.param("pageNo", "1")
@@ -100,6 +107,7 @@ public class AthleteControllerTests {
 		response.andExpect(MockMvcResultMatchers.status().isOk())
 		.andExpect(MockMvcResultMatchers.jsonPath("$.content.size()",
 				CoreMatchers.is(responseDto.getContent().size())));
+		
 	}
 	
 	@Test
@@ -135,7 +143,7 @@ public class AthleteControllerTests {
 	public void AthleteController_AthleteUpdate_ReturnsAthleteDto() throws Exception {
 		when(athleteService.updateAthlete(athleteDto, athleteId)).thenReturn(athleteDto);
 		
-		ResultActions response = mockMvc.perform(put("/api/" + athleteId + "/update") 
+		ResultActions response = mockMvc.perform(put("/api/athlete/" + athleteId + "/update") 
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(athleteDto)));
 		
@@ -150,7 +158,7 @@ public class AthleteControllerTests {
 	public void AthleteController_AtheleteDelete_ReturnsString() throws Exception {
 		doNothing().when(athleteService).deleteAthlete(athleteId);
 		
-		ResultActions response = mockMvc.perform(delete("/api/" + athleteId + "/delete") 
+		ResultActions response = mockMvc.perform(delete("/api/athlete/" + athleteId + "/delete") 
 				.contentType(MediaType.APPLICATION_JSON));
 		
 		response.andExpect(MockMvcResultMatchers.status().isOk());
