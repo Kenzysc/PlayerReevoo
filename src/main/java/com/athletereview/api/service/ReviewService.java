@@ -10,7 +10,7 @@ public interface ReviewService {
 	
 	List<ReviewDto> getReviewByAthleteId(int id);
 	
-	ReviewDto getReviewById(int id);
+	ReviewDto getReviewById(int reviewId, int athlteId);
 	
 	ReviewDto updateReview(int athleteId, int reviewId, ReviewDto reviewDto);
 	

@@ -3,6 +3,7 @@ package com.athletereview.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,30 +32,33 @@ public class ReviewController {
 	@PostMapping("/athlete/{athleteId}/review")
 	public ResponseEntity<ReviewDto> createReview(@PathVariable(value = "athleteId") int athleteId,
 												  @RequestBody ReviewDto reviewDto) {
-		return null;
+		return new ResponseEntity<>(reviewService.createReview(athleteId, reviewDto), HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/athlete/{athleteId}/{id}")
 	public ResponseEntity<ReviewDto> getReviewsById(@PathVariable(value = "athleteId") int athleteId,
 													@PathVariable(value = "id") int id) {
-		return null;
+		ReviewDto reviewDto = reviewService.getReviewById(id, athleteId);
+		return new ResponseEntity<>(reviewDto, HttpStatus.OK);
 	}
 	
 	@GetMapping("athlete/{athleteId}/reviews")
-	public List<ReviewDto> getReviewsByPokemonId(@PathVariable(value = "athleteId") int athleteId) {
-		return null;
+	public List<ReviewDto> getReviewsByAthleteId(@PathVariable(value = "athleteId") int athleteId) {
+		return reviewService.getReviewByAthleteId(athleteId);
 	}
 	
 	@PutMapping("athlete/{athleteId}/{id}")
 	public ResponseEntity<ReviewDto> updateReview(@PathVariable(value = "athleteId") int athleteId,
 												  @PathVariable(value = "id") int id,
 												  @RequestBody ReviewDto reviewDto) {
-		return null;
+		ReviewDto updatedDto = reviewService.updateReview(athleteId, id, reviewDto);
+		return new ResponseEntity<>(updatedDto, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("athlete/{athleteId}/reviews/{id}")
 	public ResponseEntity<String> deleteReview(@PathVariable(value = "athleteId") int athleteId,
 											   @PathVariable(value = "id") int id) {
-		return null;
+		reviewService.deleteReview(athleteId, id);
+		return new ResponseEntity<String>("Review deleted successfull", HttpStatus.OK);
 	}
 }

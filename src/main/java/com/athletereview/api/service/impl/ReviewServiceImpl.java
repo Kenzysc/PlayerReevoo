@@ -32,7 +32,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ReviewDto getReviewById(int id) {
+	public ReviewDto getReviewById(int reviewId, int athleteId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
