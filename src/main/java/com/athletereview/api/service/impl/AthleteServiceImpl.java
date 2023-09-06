@@ -1,5 +1,7 @@
 package com.athletereview.api.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +22,7 @@ public class AthleteServiceImpl implements AthleteService {
 
 	@Override
 	public AthleteDto createAthlete(AthleteDto athleteDto) {
-		// TODO Auto-generated method stub
+		
 		
 		return null;
 	}
@@ -32,13 +34,13 @@ public class AthleteServiceImpl implements AthleteService {
 	}
 	
 	@Override
-	public AthleteResponseDto getAllAthleteByName(int pageNo, int pageSize) {
+	public AthleteResponseDto getAllAthleteByName(int pageNo, int pageSize, String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public AthleteResponseDto getAllAthleteByType(int pageNo, int pageSize) {
+	public List<String> getAllTypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
