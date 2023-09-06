@@ -9,7 +9,7 @@ import com.athletereview.api.models.Athlete;
 
 
 public interface AthleteRepository extends JpaRepository<Athlete, Integer> {
-	Optional<Athlete> findAllByName(String name);
+	List<Athlete> findAllByName(String name);
 	
 	List<Athlete> findAllByType(String type);
 	
