@@ -18,56 +18,56 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.athletereview.api.dto.AthleteDto;
 import com.athletereview.api.dto.AthleteResponseDto;
-import com.athletereview.api.service.impl.AthleteServiceImpl;
+import com.athletereview.api.service.AthleteService;
 
 @RestController
 @RequestMapping("/api/")
 public class AthleteController {
 	
-	private AthleteServiceImpl athleteServiceImpl;
+	private AthleteService athleteService;
 	
 	@Autowired
-	public AthleteController(AthleteServiceImpl athleteServiceImpl) {
-		this.athleteServiceImpl = athleteServiceImpl;
+	public AthleteController(AthleteService athleteService) {
+		this.athleteService = athleteService;
 	}
 
 	@GetMapping("athlete")
 	public ResponseEntity<AthleteResponseDto> getAthletes(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
 														  @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize) {
-		return new ResponseEntity<>(athleteServiceImpl.getAllAthlete(pageNo, pageSize), HttpStatus.OK);
+		return new ResponseEntity<>(athleteService.getAllAthlete(pageNo, pageSize), HttpStatus.OK);
 	}
 	
 	@GetMapping("athlete/names")
 	public ResponseEntity<AthleteResponseDto> getAthletesByName(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
 														  @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
 														  @RequestParam String name) {
-		return new ResponseEntity<>(athleteServiceImpl.getAllAthleteByName(pageNo, pageSize, name), HttpStatus.OK);	
+		return new ResponseEntity<>(athleteService.getAllAthleteByName(pageNo, pageSize, name), HttpStatus.OK);	
 	}
 	
 	@GetMapping("athlete/types")
 	public List<String> getListOfAthleteTypes() {
-		return athleteServiceImpl.getAllTypes();
+		return athleteService.getAllTypes();
 	}
 	
 	@GetMapping("athlete/{id}")
 	public ResponseEntity<AthleteDto> athleteDetail(@PathVariable int id) {
-		return ResponseEntity.ok(athleteServiceImpl.getAthleteById(id));
+		return ResponseEntity.ok(athleteService.getAthleteById(id));
 	}
 	
 	@PostMapping("athlete/create")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<AthleteDto> createAthlete(@RequestBody AthleteDto athleteDto) {
-		return new ResponseEntity<>(athleteServiceImpl.createAthlete(athleteDto), HttpStatus.CREATED);
+		return new ResponseEntity<>(athleteService.createAthlete(athleteDto), HttpStatus.CREATED);
 	}
 	
 	@PutMapping("athlete/{id}/update")
 	public  ResponseEntity<AthleteDto> updateAthlete(@PathVariable("id") int pokemonId, @RequestBody AthleteDto athlete ) {
-		return new ResponseEntity<>( athleteServiceImpl.updateAthlete(athlete, pokemonId), HttpStatus.OK );
+		return new ResponseEntity<>( athleteService.updateAthlete(athlete, pokemonId), HttpStatus.OK );
 	}
 	
 	@DeleteMapping("athlete/{id}/delete")
 	public ResponseEntity<String> deleteAthlete(@PathVariable("id") int pokemonId) {
-		athleteServiceImpl.deleteAthlete(pokemonId);
+		athleteService.deleteAthlete(pokemonId);
 		return new ResponseEntity<>("Pokemon deleted", HttpStatus.OK);
 	}
 	

@@ -1,4 +1,4 @@
-package com.athletereview.api.controller;
+package com.athletereview.api.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

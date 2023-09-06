@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.athletereview.api.dto.ReviewDto;
-import com.athletereview.api.service.impl.ReviewServiceImpl;
+import com.athletereview.api.service.ReviewService;
 
 @RestController
 @RequestMapping("/api/")
 public class ReviewController {
 	
-	private ReviewServiceImpl reviewServiceImpl;
+	private ReviewService reviewService;
 	
 	@Autowired
-	public ReviewController(ReviewServiceImpl reviewServiceImpl) {
+	public ReviewController(ReviewService reviewService) {
 		super();
-		this.reviewServiceImpl = reviewServiceImpl;
+		this.reviewService = reviewService;
 	}
 
 	@PostMapping("/athlete/{athleteId}/review")
