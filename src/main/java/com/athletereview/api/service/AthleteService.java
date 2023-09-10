@@ -15,7 +15,7 @@ public interface AthleteService {
 	
 	AthleteResponseDto getAllAthleteByName(int pageNo, int pageSize, String name);
 	
-	List<String> getAllTypes();
+//	List<String> getAllTypes();
 	
 	AthleteDto updateAthlete(AthleteDto athleteDto, int id);
 	

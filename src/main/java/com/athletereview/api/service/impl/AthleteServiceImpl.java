@@ -104,13 +104,13 @@ public class AthleteServiceImpl implements AthleteService {
 		return athleteResponse;
 	}
 	
-	@Override
-	public List<String> getAllTypes() {
-		
-		List<String> types = athleteRepository.findAllTypes();
-		
-		return types;
-	}
+//	@Override
+//	public List<String> getAllTypes() {
+//		
+//		List<String> types = athleteRepository.findAllTypes();
+//		
+//		return types;
+//	}
 
 	@Override
 	public AthleteDto getAthleteById(int id) {

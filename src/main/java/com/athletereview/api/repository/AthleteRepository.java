@@ -13,7 +13,7 @@ public interface AthleteRepository extends JpaRepository<Athlete, Integer> {
 	
 	List<Athlete> findAllByType(String type);
 	
-	List<String> findAllTypes();
+//	List<String> findAllType();
 	
 	
 }

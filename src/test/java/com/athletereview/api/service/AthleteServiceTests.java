@@ -77,16 +77,16 @@ public class AthleteServiceTests {
 		Assertions.assertThat(savedAthlete).isNotNull();
 	}
 	
-	@Test
-	public void AthleteService_GetAllTypes_ReturnsAthleteResponseDto() {
-		List<String> types = Mockito.mock(List.class);
-		
-		when(athleteRepository.findAllTypes()).thenReturn(types);
-		
-		List<String> listOfTypes = athleteService.getAllTypes();
-		
-		Assertions.assertThat(listOfTypes).isNotNull();
-	}
+//	@Test
+//	public void AthleteService_GetAllTypes_ReturnsAthleteResponseDto() {
+//		List<String> types = Mockito.mock(List.class);
+//		
+//		when(athleteRepository.findAllTypes()).thenReturn(types);
+//		
+//		List<String> listOfTypes = athleteService.getAllTypes();
+//		
+//		Assertions.assertThat(listOfTypes).isNotNull();
+//	}
 	
 	@Test
 	public void AthleteService_GetAthleteById_ReturnsAthleteDto() {

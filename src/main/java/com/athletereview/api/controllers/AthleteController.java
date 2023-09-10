@@ -44,10 +44,10 @@ public class AthleteController {
 		return new ResponseEntity<>(athleteService.getAllAthleteByName(pageNo, pageSize, name), HttpStatus.OK);	
 	}
 	
-	@GetMapping("athlete/types")
-	public List<String> getListOfAthleteTypes() {
-		return athleteService.getAllTypes();
-	}
+//	@GetMapping("athlete/types")
+//	public List<String> getListOfAthleteTypes() {
+//		return athleteService.getAllTypes();
+//	}
 	
 	@GetMapping("athlete/{id}")
 	public ResponseEntity<AthleteDto> athleteDetail(@PathVariable int id) {
@@ -68,7 +68,7 @@ public class AthleteController {
 	@DeleteMapping("athlete/{id}/delete")
 	public ResponseEntity<String> deleteAthlete(@PathVariable("id") int pokemonId) {
 		athleteService.deleteAthlete(pokemonId);
-		return new ResponseEntity<>("Pokemon deleted", HttpStatus.OK);
+		return new ResponseEntity<>("Athlete deleted", HttpStatus.OK);
 	}
 	
 }
