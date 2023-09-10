@@ -43,11 +43,7 @@ public class AthleteController {
 														  @RequestParam String name) {
 		return new ResponseEntity<>(athleteService.getAllAthleteByName(pageNo, pageSize, name), HttpStatus.OK);	
 	}
-	
-//	@GetMapping("athlete/types")
-//	public List<String> getListOfAthleteTypes() {
-//		return athleteService.getAllTypes();
-//	}
+
 	
 	@GetMapping("athlete/{id}")
 	public ResponseEntity<AthleteDto> athleteDetail(@PathVariable int id) {

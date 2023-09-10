@@ -11,9 +11,6 @@ import com.athletereview.api.models.Athlete;
 public interface AthleteRepository extends JpaRepository<Athlete, Integer> {
 	List<Athlete> findAllByName(String name);
 	
-	List<Athlete> findAllByType(String type);
-	
-//	List<String> findAllType();
-	
+	List<Athlete> findAllByType(String type);	
 	
 }
