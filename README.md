@@ -13,11 +13,5 @@ From Football to Volleyball and Beyond, with Friends and Foes.
 ## API Documentation
   You can get the documentation for this API [here](https://documenter.getpostman.com/view/28804282/2s9YC1XaFJ)
 
-## Setup Guide
-1. Go into directory where you plan on keeping project and run.
-   ```
-    git fork https://github.com/Kenzysc/PlayerReevoo.git
+   
 
-2. Create a local database. (Watch this [Youtube Video](https://www.youtube.com/watch?v=k9TmykUOE2I) )
-
-3. Run maven install from POM.xml file
