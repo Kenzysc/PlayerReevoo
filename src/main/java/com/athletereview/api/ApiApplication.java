@@ -18,15 +18,15 @@ public class ApiApplication {
 		SpringApplication.run(ApiApplication.class, args);
 	}
 	
-	// adds USER and ADMIN roles to "roles" when spring app loads
-	@Bean
-    CommandLineRunner init (RoleRepository roleRepo){
-        return args -> {
-           List<String> roles = Arrays.asList("ADMIN", "USER");
-        	
-        	Role role = new Role();
-        	roles.forEach(name -> role.setName(name));
-        	roleRepo.save(role);
-        };
-    }
+//	// adds USER and ADMIN roles to "roles" when spring app loads
+//	@Bean
+//    CommandLineRunner init (RoleRepository roleRepo){
+//        return args -> {
+//           List<String> roles = Arrays.asList("ADMIN", "USER");
+//        	
+//        	Role role = new Role();
+//        	roles.forEach(name -> role.setName(name));
+//        	roleRepo.save(role);
+//        };
+//    }
 }

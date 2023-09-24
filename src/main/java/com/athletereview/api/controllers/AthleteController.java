@@ -37,14 +37,6 @@ public class AthleteController {
 		return new ResponseEntity<>(athleteService.getAllAthlete(pageNo, pageSize), HttpStatus.OK);
 	}
 	
-	@GetMapping("athlete/names")
-	public ResponseEntity<AthleteResponseDto> getAthletesByName(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
-														  @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
-														  @RequestParam String name) {
-		return new ResponseEntity<>(athleteService.getAllAthleteByName(pageNo, pageSize, name), HttpStatus.OK);	
-	}
-
-	
 	@GetMapping("athlete/{id}")
 	public ResponseEntity<AthleteDto> athleteDetail(@PathVariable int id) {
 		return ResponseEntity.ok(athleteService.getAthleteById(id));

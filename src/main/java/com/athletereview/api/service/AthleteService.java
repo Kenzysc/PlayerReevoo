@@ -10,9 +10,7 @@ public interface AthleteService {
 	AthleteResponseDto getAllAthlete(int pageNo, int pageSize);
 	
 	AthleteDto getAthleteById(int id);
-	
-	AthleteResponseDto getAllAthleteByName(int pageNo, int pageSize, String name);
-		
+			
 	AthleteDto updateAthlete(AthleteDto athleteDto, int id);
 	
 	void deleteAthlete(int id);

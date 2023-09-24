@@ -94,24 +94,6 @@ public class AthleteControllerTests {
 	}
 	
 	@Test
-	public void AthleteController_GetAllAthletesByName_ReturnsResponseDto() throws Exception {
-		
-		when(athleteService.getAllAthleteByName(1, 10, "messi")).thenReturn(responseDto);
-		
-		ResultActions response = mockMvc.perform(get("/api/athlete/names")
-				.contentType(MediaType.APPLICATION_JSON)
-				.param("pageNo", "1")
-				.param("pageSize", "10")
-				.param("name", "messi"));
-		
-		response.andExpect(MockMvcResultMatchers.status().isOk())
-		.andExpect(MockMvcResultMatchers.jsonPath("$.content.size()",
-				CoreMatchers.is(responseDto.getContent().size())));
-		
-	}
-	
-	
-	@Test
 	public void AthleteController_AthleteDetail_ReturnsAthleteDto() throws Exception {
 		when(athleteService.getAthleteById(athleteId)).thenReturn(athleteDto);
 		

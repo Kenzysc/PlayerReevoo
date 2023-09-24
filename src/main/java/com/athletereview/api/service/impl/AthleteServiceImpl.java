@@ -82,27 +82,6 @@ public class AthleteServiceImpl implements AthleteService {
 		athlete.setType(athleteDto.getType());
 		return athlete;
 	}
-	
-	@Override
-	public AthleteResponseDto getAllAthleteByName(int pageNo, int pageSize, String name) {
-		Pageable pageable = PageRequest.of(pageNo, pageSize);
-		
-		List<Athlete> athletesList = athleteRepository.findAllByName(name);
-		Page<Athlete> athletes = new PageImpl<Athlete>(athletesList, pageable, athletesList.size());
-		List<Athlete> listOfAthlete = athletes.getContent();
-		
-		List<AthleteDto> content = listOfAthlete.stream().map(p -> mapToDto(p)).collect(Collectors.toList());
-		
-		AthleteResponseDto athleteResponse = new AthleteResponseDto();
-		athleteResponse.setContent(content);
-		athleteResponse.setPageNo(athletes.getNumber());
-		athleteResponse.setPageSize(athletes.getSize());
-		athleteResponse.setTotalElement(athletes.getTotalElements());
-		athleteResponse.setTotalPages(athletes.getTotalPages());
-		athleteResponse.setLast(athletes.isLast());
-		
-		return athleteResponse;
-	}
 
 	@Override
 	public AthleteDto getAthleteById(int id) {
@@ -132,23 +111,24 @@ public class AthleteServiceImpl implements AthleteService {
 	
 	@Override
 	public AthleteResponseDto searchAthlete(int pageNo, int pageSize, String query) {
-		Pageable pageable = PageRequest.of(pageNo, pageSize);
 		
-		List<Athlete> athletesList = athleteRepository.searchAthlete(query);
-		Page<Athlete> athletes = new PageImpl<Athlete>(athletesList, pageable, athletesList.size());
-		List<Athlete> listOfAthlete = athletes.getContent();
+			Pageable pageable = PageRequest.of(pageNo, pageSize);
+			
+			Page<Athlete> athletes = athleteRepository.searchAthlete(query, pageable);
+			List<Athlete> listOfAthlete = athletes.getContent();
+			
+			List<AthleteDto> content = listOfAthlete.stream().map(p -> mapToDto(p)).collect(Collectors.toList());
+			
+			AthleteResponseDto athleteResponse = new AthleteResponseDto();
+			athleteResponse.setContent(content);
+			athleteResponse.setPageNo(athletes.getNumber());
+			athleteResponse.setPageSize(athletes.getSize());
+			athleteResponse.setTotalElement(athletes.getTotalElements());
+			athleteResponse.setTotalPages(athletes.getTotalPages());
+			athleteResponse.setLast(athletes.isLast());
+			
+			return athleteResponse;
 		
-		List<AthleteDto> content = listOfAthlete.stream().map(p -> mapToDto(p)).collect(Collectors.toList());
-		
-		AthleteResponseDto athleteResponse = new AthleteResponseDto();
-		athleteResponse.setContent(content);
-		athleteResponse.setPageNo(athletes.getNumber());
-		athleteResponse.setPageSize(athletes.getSize());
-		athleteResponse.setTotalElement(athletes.getTotalElements());
-		athleteResponse.setTotalPages(athletes.getTotalPages());
-		athleteResponse.setLast(athletes.isLast());
-		
-		return athleteResponse;
 	}
 
 }

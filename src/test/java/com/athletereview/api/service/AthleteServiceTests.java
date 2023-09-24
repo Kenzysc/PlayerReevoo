@@ -23,6 +23,9 @@ import com.athletereview.api.models.Athlete;
 import com.athletereview.api.repository.AthleteRepository;
 import com.athletereview.api.service.impl.AthleteServiceImpl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 @ExtendWith(MockitoExtension.class)
 public class AthleteServiceTests {
 	
@@ -67,28 +70,6 @@ public class AthleteServiceTests {
 	}
 	
 	@Test
-	public void AthleteService_GetAllAthletesByName_ReturnsAthleteResponseDto() {
-		List<Athlete> athletes = Mockito.mock(List.class);
-		
-		when(athleteRepository.findAllByName(Mockito.any(String.class))).thenReturn(athletes);
-		
-		AthleteResponseDto savedAthlete = athleteService.getAllAthlete(1, 10);
-		
-		Assertions.assertThat(savedAthlete).isNotNull();
-	}
-	
-//	@Test
-//	public void AthleteService_GetAllTypes_ReturnsAthleteResponseDto() {
-//		List<String> types = Mockito.mock(List.class);
-//		
-//		when(athleteRepository.findAllTypes()).thenReturn(types);
-//		
-//		List<String> listOfTypes = athleteService.getAllTypes();
-//		
-//		Assertions.assertThat(listOfTypes).isNotNull();
-//	}
-	
-	@Test
 	public void AthleteService_GetAthleteById_ReturnsAthleteDto() {
 		when(athleteRepository.findById(1)).thenReturn(Optional.ofNullable(athlete));
 		
@@ -118,11 +99,11 @@ public class AthleteServiceTests {
 	
 	@Test
 	public void AthleteService_SearchAthlete_ReturnsAthleteResponseDto() {
-		List<Athlete> athletes = Mockito.mock(List.class);
+		Page<Athlete> athletes = Mockito.mock(Page.class);
 		
-		when(athleteRepository.searchAthlete(Mockito.any(String.class))).thenReturn(athletes);
+		when(athleteRepository.searchAthlete(Mockito.any(String.class), Mockito.any(Pageable.class))).thenReturn(athletes);
 		
-		AthleteResponseDto savedAthlete = athleteService.getAllAthlete(1, 10);
+		AthleteResponseDto savedAthlete = athleteService.searchAthlete(1, 10, "messi");
 		
 		Assertions.assertThat(savedAthlete).isNotNull();
 	}
