@@ -129,5 +129,26 @@ public class AthleteServiceImpl implements AthleteService {
 		athleteRepository.delete(athlete);
 		
 	}
+	
+	@Override
+	public AthleteResponseDto searchAthlete(int pageNo, int pageSize, String query) {
+		Pageable pageable = PageRequest.of(pageNo, pageSize);
+		
+		List<Athlete> athletesList = athleteRepository.searchAthlete(query);
+		Page<Athlete> athletes = new PageImpl<Athlete>(athletesList, pageable, athletesList.size());
+		List<Athlete> listOfAthlete = athletes.getContent();
+		
+		List<AthleteDto> content = listOfAthlete.stream().map(p -> mapToDto(p)).collect(Collectors.toList());
+		
+		AthleteResponseDto athleteResponse = new AthleteResponseDto();
+		athleteResponse.setContent(content);
+		athleteResponse.setPageNo(athletes.getNumber());
+		athleteResponse.setPageSize(athletes.getSize());
+		athleteResponse.setTotalElement(athletes.getTotalElements());
+		athleteResponse.setTotalPages(athletes.getTotalPages());
+		athleteResponse.setLast(athletes.isLast());
+		
+		return athleteResponse;
+	}
 
 }

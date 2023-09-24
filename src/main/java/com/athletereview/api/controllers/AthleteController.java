@@ -67,4 +67,11 @@ public class AthleteController {
 		return new ResponseEntity<>("Athlete deleted", HttpStatus.OK);
 	}
 	
+	@GetMapping("athlete/search")
+	public ResponseEntity<AthleteResponseDto> searchAthletes(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+														  	 @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
+														  	 @RequestParam String query) {
+		return new ResponseEntity<>(athleteService.searchAthlete(pageNo, pageSize, query), HttpStatus.OK);	
+	}
+	
 }

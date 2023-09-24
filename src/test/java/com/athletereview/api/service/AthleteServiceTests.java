@@ -115,6 +115,17 @@ public class AthleteServiceTests {
 		
 		assertAll(() -> athleteService.deleteAthlete(1));
 	}
+	
+	@Test
+	public void AthleteService_SearchAthlete_ReturnsAthleteResponseDto() {
+		List<Athlete> athletes = Mockito.mock(List.class);
+		
+		when(athleteRepository.searchAthlete(Mockito.any(String.class))).thenReturn(athletes);
+		
+		AthleteResponseDto savedAthlete = athleteService.getAllAthlete(1, 10);
+		
+		Assertions.assertThat(savedAthlete).isNotNull();
+	}
 
 }
 

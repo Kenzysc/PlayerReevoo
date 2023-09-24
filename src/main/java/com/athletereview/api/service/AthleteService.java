@@ -1,7 +1,5 @@
 package com.athletereview.api.service;
 
-import java.util.List;
-
 import com.athletereview.api.dto.AthleteDto;
 import com.athletereview.api.dto.AthleteResponseDto;
 
@@ -18,6 +16,8 @@ public interface AthleteService {
 	AthleteDto updateAthlete(AthleteDto athleteDto, int id);
 	
 	void deleteAthlete(int id);
+	
+	AthleteResponseDto searchAthlete(int pageNo, int pageSize, String query);
 	
 	
 	

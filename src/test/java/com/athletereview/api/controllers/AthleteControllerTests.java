@@ -62,7 +62,7 @@ public class AthleteControllerTests {
 	}
 	
 	@Test
-	public void AthleteController_CreatePokemon_ReturnsCreated() throws Exception {
+	public void AthleteController_CreateAthlete_ReturnsCreated() throws Exception {
 		given(athleteService.createAthlete(ArgumentMatchers.any())).willAnswer((
 				Invocation -> Invocation.getArgument(0)));
 		
@@ -149,6 +149,23 @@ public class AthleteControllerTests {
 				.contentType(MediaType.APPLICATION_JSON));
 		
 		response.andExpect(MockMvcResultMatchers.status().isOk());
+		
+	}
+	
+	@Test
+	public void AthleteController_AthleteSearch_ReturnsResponseDto() throws Exception {
+		
+		when(athleteService.searchAthlete(1, 10, "messi")).thenReturn(responseDto);
+		
+		ResultActions response = mockMvc.perform(get("/api/athlete/search")
+				.contentType(MediaType.APPLICATION_JSON)
+				.param("pageNo", "1")
+				.param("pageSize", "10")
+				.param("query", "messi"));
+		
+		response.andExpect(MockMvcResultMatchers.status().isOk())
+		.andExpect(MockMvcResultMatchers.jsonPath("$.content.size()",
+				CoreMatchers.is(responseDto.getContent().size())));
 		
 	}
 	
