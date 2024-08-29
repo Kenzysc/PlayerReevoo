@@ -86,6 +86,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>player-reevoo-image</finalName>
+
 	</build>
 
 </project>
