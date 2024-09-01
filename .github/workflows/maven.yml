@@ -45,7 +45,7 @@ jobs:
     - name: Login to Azure Registry
       run: docker login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }} springbootapi.azurecr.io
     - name: Build image
-      run:  docker build -t springbootapi.azurecr.io/springbootapi:latest
+      run:  docker build -t springbootapi.azurecr.io/springbootapi:latest .
     - name: Push to Azure Registry
       run:  docker push springbootapi.azurecr.io/springbootapi:latest
     # - name: Login via Azure CLI
