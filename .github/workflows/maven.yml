@@ -37,15 +37,15 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
         image: kenzysc/player-reevoo-image
-        tags: latest, springbootapi.azurecr.io:springbootapi
+        tags: latest
         registry: docker.io
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Login to Azure Registry
       run: docker login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }} springbootapi.azurecr.io
-    # - name: Build image
-    #   run:  docker build -t springbootapi.azurecr.io/springbootapi:latest
+    - name: Build image
+      run:  docker build -t springbootapi.azurecr.io/springbootapi:latest
     - name: Push to Azure Registry
       run:  docker push springbootapi.azurecr.io/springbootapi:latest
     # - name: Login via Azure CLI
