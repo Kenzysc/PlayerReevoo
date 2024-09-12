@@ -2,11 +2,6 @@ package com.athletereview.api.security;
 
 import java.io.IOException;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -29,14 +29,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		String token = getJWTFromRequest(request);
+
+		// Log the extracted token
+		System.out.println("Token extracted: " + token);
+
 		if(StringUtils.hasText(token) && tokenGenerator.validateToken(token)) {
 			String username = tokenGenerator.getUsernameFromJWT(token);
 			
 			UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
 			UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails,
-					userDetails.getAuthorities());
+					null, userDetails.getAuthorities());
 			authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 			SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+			System.out.println("Authentication details: " + authenticationToken);
+			System.out.println("User authenticated: " + userDetails.getUsername() + ", Roles: " + userDetails.getAuthorities());
 		}
 		
 		filterChain.doFilter(request, response); 
