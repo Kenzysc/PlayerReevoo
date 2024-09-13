@@ -37,7 +37,7 @@ public class SecurityConfig {
         );		
         http.authorizeHttpRequests(request -> {
         	request.requestMatchers("/api/auth/**").permitAll();
-			request.requestMatchers("swaggger-ui.html").permitAll();
+			request.requestMatchers("swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**").permitAll();
         	request.anyRequest().authenticated();
         });									
         // http.httpBasic(Customizer.withDefaults());
