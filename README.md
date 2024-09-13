@@ -1,6 +1,7 @@
-# PlayerReevoo
+# [PlayerReevoo](https://playerreevoo-htf5ayerd2e6effg.eastus-01.azurewebsites.net/swagger-ui/index.html)
 A Platform to Rate and Review your Favourite Athletes (in Spring Boot)
 From Football to Volleyball and Beyond, with Friends and Foes.
+Visit [webpage here](https://playerreevoo-htf5ayerd2e6effg.eastus-01.azurewebsites.net/swagger-ui/index.html)
 
 ## Current Features
 * CRUD functionality:
@@ -11,7 +12,7 @@ From Football to Volleyball and Beyond, with Friends and Foes.
   * Utilizes role-based authorization to determine which users can access which pages and alter db data.
   
 ## API Documentation
-  You can get the documentation for this API [here](https://documenter.getpostman.com/view/28804282/2s9YC1XaFJ)
+  You can get the documentation for this API on [Postman](https://documenter.getpostman.com/view/28804282/2s9YC1XaFJ)
 
 ## HTTP Requests
 All API requests are made by sending a secure HTTPS request using one of the following methods:
@@ -35,5 +36,7 @@ Each response will be returned with one of the following HTTP status codes:
 
 * 400 Bad Request There was a problem with the request
 
-* 500 Server Error Server error
+* 403 Forbidden Error (Authorization)
+
+* 500 Server Error 
 
