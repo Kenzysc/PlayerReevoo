@@ -38,7 +38,7 @@ public class SecurityConfig {
         );		
         http.authorizeHttpRequests(request -> {
         	request.requestMatchers("/api/auth/**").permitAll();
-			request.requestMatchers("/swagger-ui/index.html", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**").permitAll();
+			request.requestMatchers("/swagger-ui/index.html", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/configuration/security", "/webjars/**").permitAll();
         	request.anyRequest().authenticated();
         });									
         // http.httpBasic(Customizer.withDefaults());
