@@ -17,11 +17,16 @@ public class SwaggerConfig {
         return new OpenAPI()
             .info(new Info().title("PlayerReevoo API").version("v0.1")) 
             .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+            .addSecurityItem(new SecurityRequirement().addList("basic"))
                 .components(new Components()
                     .addSecuritySchemes("bearerAuth",
                         new SecurityScheme()
                             .type(SecurityScheme.Type.HTTP)
                             .scheme("bearer")
-                            .bearerFormat("JWT")));
+                            .bearerFormat("JWT"))
+                    .addSecuritySchemes("basicAuth",
+                        new SecurityScheme()
+                            .type(SecurityScheme.Type.HTTP)
+                            .scheme("basic")));
     }
 }
